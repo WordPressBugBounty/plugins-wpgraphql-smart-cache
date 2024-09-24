@@ -1,0 +1,1 @@
+# plugins-wpgraphql-smart-cache
