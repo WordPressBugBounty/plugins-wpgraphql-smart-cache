@@ -4,25 +4,25 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite4509b5e06fcb4c745a6a025e60de93a
+class ComposerStaticInitbda963e63dc7a9859951e905c5e45612
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
+        'W' =>
         array (
             'WPGraphQL\\SmartCache\\' => 21,
         ),
-        'A' => 
+        'A' =>
         array (
             'Appsero\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPGraphQL\\SmartCache\\' => 
+        'WPGraphQL\\SmartCache\\' =>
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Appsero\\' => 
+        'Appsero\\' =>
         array (
             0 => __DIR__ . '/..' . '/appsero/client/src',
         ),
@@ -57,9 +57,9 @@ class ComposerStaticInite4509b5e06fcb4c745a6a025e60de93a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInite4509b5e06fcb4c745a6a025e60de93a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInite4509b5e06fcb4c745a6a025e60de93a::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInite4509b5e06fcb4c745a6a025e60de93a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbda963e63dc7a9859951e905c5e45612::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbda963e63dc7a9859951e905c5e45612::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbda963e63dc7a9859951e905c5e45612::$classMap;
 
         }, null, ClassLoader::class);
     }
