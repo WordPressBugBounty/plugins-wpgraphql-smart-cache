@@ -3,7 +3,7 @@
         'name' => 'wp-graphql/wp-graphql-smart-cache',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '31179ba9f5b5c56a2aa51b4e1f3e87bf9aa0f900',
+        'reference' => '4a66dcf2598f05b037563f473a07a115e47675e5',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'wp-graphql/wp-graphql-smart-cache' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '31179ba9f5b5c56a2aa51b4e1f3e87bf9aa0f900',
+            'reference' => '4a66dcf2598f05b037563f473a07a115e47675e5',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
