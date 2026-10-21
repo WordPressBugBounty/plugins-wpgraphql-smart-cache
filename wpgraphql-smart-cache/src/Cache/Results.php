@@ -73,7 +73,7 @@ class Results extends Query {
 	/**
 	 * Unique identifier for this request is normalized query string, operation and variables
 	 *
-	 * @param string $query_id queryId from the graphql query request
+	 * @param string|null $query_id queryId from the graphql query request
 	 * @param string $query query string
 	 * @param array $variables Variables sent with request or null
 	 * @param string $operation_name Name of operation if specified on the request or null
@@ -316,6 +316,32 @@ class Results extends Query {
 	}
 
 	/**
+	 * Remove the extensions from a response before it is stored in the object cache.
+	 *
+	 * Extensions are rebuilt for every request, a cache hit included, so a stored copy is never
+	 * needed: it would keep serving an extension after it is turned off, and can hold values
+	 * that cannot be serialized, such as closures in debug entries. A result object is converted
+	 * with toArray(), as the storage adapters do.
+	 *
+	 * @since 2.3.4
+	 *
+	 * @param mixed $response The result of a single operation.
+	 *
+	 * @return mixed The result without extensions.
+	 */
+	public static function strip_extensions( $response ) {
+		if ( is_object( $response ) && method_exists( $response, 'toArray' ) ) {
+			$response = $response->toArray();
+		}
+
+		if ( is_array( $response ) ) {
+			unset( $response['extensions'] );
+		}
+
+		return $response;
+	}
+
+	/**
 	 * When a query response is being returned to the client, build map for each item and this query/queryId
 	 * That way we will know what to invalidate on data change.
 	 *
@@ -381,7 +407,7 @@ class Results extends Query {
 		if ( false === $cached_result ) {
 			$expiration = \get_graphql_setting( 'global_ttl', self::GLOBAL_DEFAULT_TTL, 'graphql_cache_section' );
 
-			$this->save( $key, $filtered_response, $expiration );
+			$this->save( $key, self::strip_extensions( $filtered_response ), $expiration );
 		}
 	}
 
